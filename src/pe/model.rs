@@ -263,7 +263,14 @@ impl Pe {
         self.optional_header_offset(self.profile().size_of_image)
     }
 
-    #[cfg(test)]
+    /// Absolute offset of COFF Characteristics.
+    pub(crate) fn coff_characteristics_offset(&self) -> usize {
+        self.opt
+            .checked_sub(2)
+            .expect("PE COFF header was validated during parsing")
+    }
+
+    /// Absolute offset of IMAGE_OPTIONAL_HEADER.DllCharacteristics.
     pub(crate) fn dll_characteristics_offset(&self) -> usize {
         self.optional_header_offset(70)
     }

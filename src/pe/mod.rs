@@ -4,9 +4,9 @@ mod image;
 mod model;
 mod parse;
 
-pub(crate) use crate::util::bytes::write_u32;
 #[cfg(test)]
 pub(crate) use crate::util::bytes::{read_u32, read_u64, write_u64};
+pub(crate) use crate::util::bytes::{write_u16, write_u32};
 pub use address::{FileOffset, FileRange, Rva, RvaRange};
 pub use checksum::{align_up, pe_checksum};
 #[cfg(test)]
